@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vaibhav Patel — Game Developer</title>
+  <title>Vaibhav Patel — Senior Game Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -66,6 +66,13 @@
       width: 8px; height: 8px; border-radius: 50%;
       background: var(--teal); box-shadow: 0 0 8px var(--teal);
       animation: blink 2.5s ease infinite;
+    }
+
+    .nav-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(0,207,180,0.4);
+      box-shadow: 0 0 10px rgba(0,207,180,0.2);
     }
 
     @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
@@ -178,26 +185,60 @@
       transform: translateY(-2px);
     }
 
-    /* ── HERO STATS ── */
-    .hero-stats-panel {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 36px 32px;
-      display: flex; flex-direction: column; gap: 28px;
+    /* ── HERO PHOTO ── */
+    .hero-photo-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 32px;
       animation: fadeUp 0.7s 0.32s ease both;
     }
-    .stat-row {
-      display: flex; flex-direction: column; gap: 4px;
-      padding-bottom: 28px; border-bottom: 1px solid var(--border);
+
+    .hero-photo-ring {
+      position: relative;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--teal), var(--accent));
+      box-shadow: 0 0 60px rgba(0,207,180,0.15), 0 0 120px rgba(59,158,255,0.10);
     }
-    .stat-row:last-child { padding-bottom: 0; border-bottom: none; }
-    .stat-val {
-      font-size: 44px; font-weight: 800; color: var(--heading);
-      line-height: 1; letter-spacing: -2px;
+
+    .hero-photo-ring::before {
+      content: '';
+      position: absolute; inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,207,180,0.15);
+      animation: spin 12s linear infinite;
     }
-    .stat-val span { color: var(--accent); }
-    .stat-lbl {
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hero-photo {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--bg-deep);
+    }
+
+    .hero-photo-stats {
+      display: flex; gap: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 28px;
+    }
+
+    .hero-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+
+    .hero-stat-val {
+      font-size: 26px; font-weight: 800; color: var(--heading);
+      line-height: 1; letter-spacing: -1px;
+    }
+    .hero-stat-val span { color: var(--accent); }
+
+    .hero-stat-lbl {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--text-dim);
+      font-size: 10px; color: var(--text-dim);
       text-transform: uppercase; letter-spacing: 0.1em;
     }
 
@@ -391,7 +432,8 @@
       .games-grid  { grid-template-columns: repeat(2,1fr); }
       .skills-grid { grid-template-columns: repeat(2,1fr); }
       .hero-inner  { grid-template-columns: 1fr; }
-      .hero-stats-panel { display: none; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-ring { width: 200px; height: 200px; }
     }
     @media(max-width: 768px) {
       nav { padding: 0 20px; }
@@ -418,6 +460,7 @@
 <nav>
   <a href="#" class="nav-brand">
     <span class="nav-brand-dot"></span>
+    <img src="assets/profile.jpg" alt="Vaibhav Patel" class="nav-avatar">
     VAIBHAV PATEL
   </a>
   <ul class="nav-links">
@@ -437,11 +480,11 @@
 <div id="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Game Developer · Open to Work</div>
+      <div class="hero-eyebrow">Senior Game Developer · Open to Work</div>
       <h1>Building Games<br>That <em>Scale.</em></h1>
       <p class="hero-sub">
         10+ years shipping high-performance mobile titles.
-        Unity, C#, multiplayer architecture, LiveOps, and AWS backend - 
+        Unity, C#, multiplayer architecture, LiveOps, and AWS backend —
         from prototype to millions of players.
       </p>
       <div class="hero-actions">
@@ -454,18 +497,23 @@
       </div>
     </div>
 
-    <div class="hero-stats-panel">
-      <div class="stat-row">
-        <div class="stat-val">10<span>+</span></div>
-        <div class="stat-lbl">Years of experience</div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img src="assets/profile.jpg" alt="Vaibhav Patel" class="hero-photo">
       </div>
-      <div class="stat-row">
-        <div class="stat-val">4</div>
-        <div class="stat-lbl">Companies worked with</div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-val">6<span>+</span></div>
-        <div class="stat-lbl">Shipped titles</div>
+      <div class="hero-photo-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-val">10<span>+</span></span>
+          <span class="hero-stat-lbl">Years</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">4</span>
+          <span class="hero-stat-lbl">Companies</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">6<span>+</span></span>
+          <span class="hero-stat-lbl">Titles</span>
+        </div>
       </div>
     </div>
   </div>
@@ -525,7 +573,7 @@
       <div class="game-body">
         <div class="game-platform">Simulation · Juego Studios</div>
         <h3>3D Bank Simulation</h3>
-        <p>Interactive financial literacy simulation for Emirates NBD - modular Unity architecture and UI-driven learning systems for students.</p>
+        <p>Interactive financial literacy simulation for Emirates NBD — modular Unity architecture and UI-driven learning systems for students.</p>
       </div>
     </div>
 
@@ -690,10 +738,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2025 Vaibhav Patel - Game Developer</span>
+  <span>© 2025 Vaibhav Patel — Senior Game Developer</span>
   <div class="foot-links">
     <!-- REPLACE 91XXXXXXXXXX with your number e.g. 919876543210 -->
     <a href="https://wa.me/#" target="_blank">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/vaibhav-patel/" target="_blank">LinkedIn</a>
     <a href="#hero">Back to top ↑</a>
   </div>
 </footer>

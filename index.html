@@ -1,176 +1,800 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Vaibhav Patel | Senior Game Developer</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Patel — Senior Game Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep:    #070d1a;
+      --bg-base:    #0b1526;
+      --bg-card:    #0f1c30;
+      --bg-raised:  #142038;
+      --border:     rgba(99,155,255,0.10);
+      --border-hi:  rgba(99,155,255,0.25);
+      --text:       #c8d8f0;
+      --text-dim:   #5a7a9e;
+      --heading:    #e8f2ff;
+      --accent:     #3b9eff;
+      --accent-lo:  rgba(59,158,255,0.12);
+      --accent-glo: rgba(59,158,255,0.25);
+      --teal:       #00cfb4;
+      --teal-lo:    rgba(0,207,180,0.10);
+    }
 
-  <link rel="stylesheet" href="css/style.css">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ───── BG GLOW ───── */
+    .bg-glow {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 80% 5%,  rgba(20,60,120,0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 10% 90%, rgba(0,80,80,0.20) 0%, transparent 60%);
+    }
+
+    /* ───── NAV ───── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 64px;
+      height: 68px;
+      background: rgba(7,13,26,0.80);
+      backdrop-filter: blur(18px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 500;
+      color: var(--heading); text-decoration: none; letter-spacing: 0.04em;
+    }
+
+    .nav-brand-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: blink 2.5s ease infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: var(--text-dim); text-decoration: none;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--accent-lo);
+      border: 1px solid var(--border-hi);
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: var(--accent); text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent-glo);
+    }
+
+    /* ───── HERO ───── */
+    #hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 64px 80px;
+    }
+
+    .hero-inner {
+      max-width: 1140px; margin: auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 14px;
+      border: 1px solid rgba(0,207,180,0.3);
+      background: rgba(0,207,180,0.06);
+      border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--teal);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); animation: blink 2s ease infinite;
+    }
+
+    h1 {
+      font-size: clamp(46px, 5.5vw, 80px);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+      animation: fadeUp 0.6s 0.08s ease both;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(115deg, var(--accent) 0%, #60c5ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      margin-top: 22px;
+      font-size: 16px; font-weight: 400;
+      color: var(--text-dim); line-height: 1.7; max-width: 500px;
+      animation: fadeUp 0.6s 0.16s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 14px; margin-top: 38px; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.24s ease both;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 10px;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      transition: all 0.22s ease;
+    }
+
+    .btn-fill {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(59,158,255,0.30);
+    }
+    .btn-fill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(59,158,255,0.45);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border-hi);
+      color: var(--text);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── HERO STATS CARD ── */
+    .hero-stats-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 28px;
+      animation: fadeUp 0.7s 0.32s ease both;
+    }
+
+    .stat-row {
+      display: flex; flex-direction: column; gap: 4px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-row:last-child { padding-bottom: 0; border-bottom: none; }
+
+    .stat-val {
+      font-size: 44px; font-weight: 800; color: var(--heading);
+      line-height: 1; letter-spacing: -2px;
+    }
+    .stat-val span { color: var(--accent); }
+
+    .stat-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ───── SHARED SECTION ───── */
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 1140px; margin: auto;
+      padding: 100px 64px;
+    }
+
+    .sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-hi) 30%, var(--border-hi) 70%, transparent);
+      max-width: 1140px; margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.15em;
+      margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: ''; width: 20px; height: 1px; background: var(--accent);
+    }
+
+    h2 {
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 800; color: var(--heading);
+      letter-spacing: -1.5px; line-height: 1.1;
+      margin-bottom: 52px;
+    }
+
+    /* ───── FEATURED GAMES ───── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .game-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex; flex-direction: column;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hi);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,158,255,0.12);
+    }
+
+    .game-img-wrap {
+      width: 100%; height: 190px;
+      overflow: hidden; position: relative;
+    }
+
+    .game-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .game-card:hover .game-img-wrap img { transform: scale(1.05); }
+
+    .game-img-fallback {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--bg-raised), var(--bg-base));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+    }
+
+    .game-body {
+      padding: 22px 24px 26px;
+      flex: 1; display: flex; flex-direction: column;
+    }
+
+    .game-platform {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .game-body h3 {
+      font-size: 17px; font-weight: 700; color: var(--heading);
+      margin-bottom: 10px; letter-spacing: -0.3px;
+    }
+
+    .game-body p {
+      font-size: 13.5px; color: var(--text-dim);
+      line-height: 1.65; flex: 1;
+    }
+
+    .game-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 500; color: var(--accent);
+      text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em;
+      transition: gap 0.2s;
+    }
+    .game-link:hover { gap: 10px; }
+
+    /* ───── SKILLS ───── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 20px;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover { border-color: var(--border-hi); }
+
+    .skill-icon { font-size: 22px; margin-bottom: 10px; }
+
+    .skill-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;
+    }
+
+    .skill-list { display: flex; flex-direction: column; gap: 5px; }
+
+    .skill-list span {
+      font-size: 13px; color: var(--text);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-list span:last-child { border-bottom: none; }
+
+    /* ───── COMPANIES ───── */
+    .co-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .co-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 20px 20px;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .co-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .co-card--featured {
+      border-color: rgba(0,207,180,0.25);
+      background: linear-gradient(145deg, #0d1e35, #0f1c2e);
+    }
+    .co-card--featured:hover {
+      border-color: rgba(0,207,180,0.5);
+      box-shadow: 0 16px 40px rgba(0,207,180,0.08);
+    }
+
+    .co-card-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .co-card-logo {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg-raised);
+      flex-shrink: 0;
+    }
+
+    .co-card-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .co-card-logo-fallback {
+      display: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+    }
+
+    .co-card-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px; font-weight: 500;
+      color: var(--teal); background: var(--teal-lo);
+      border: 1px solid rgba(0,207,180,0.25);
+      border-radius: 100px; padding: 3px 9px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .co-card-name {
+      font-size: 15px; font-weight: 700; color: var(--heading);
+      letter-spacing: -0.2px;
+    }
+
+    .co-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+
+    .co-card-tags span {
+      padding: 3px 9px;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 10px; color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ───── CTA ───── */
+    .cta-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 80px 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .cta-block::before {
+      content: '';
+      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(59,158,255,0.09), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-block h2 { margin-bottom: 12px; }
+    .cta-block p { color: var(--text-dim); font-size: 16px; margin-bottom: 36px; }
+
+    /* ───── FOOTER ───── */
+    footer {
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 64px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--text-dim);
+    }
+
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    footer .foot-links { display: flex; gap: 28px; }
+
+    /* ───── SCROLL REVEAL ───── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ───── RESPONSIVE ───── */
+    @media(max-width: 1200px) {
+      .co-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 1024px) {
+      .games-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-stats-panel { display: none; }
+    }
+    @media(max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links, .nav-cta { display: none; }
+      #hero, .wrap { padding-left: 20px; padding-right: 20px; }
+      #hero { padding-top: 100px; }
+      .games-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .co-cards { grid-template-columns: repeat(2, 1fr); }
+      footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+      .cta-block { padding: 48px 24px; }
+    }
+    @media(max-width: 420px) {
+      .co-cards { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Vaibhav Patel</h1>
-  <div class="subtitle">
-    Game Developer | Unity | C# | Multiplayer & LiveOps | 10+ Years
+<div class="bg-glow"></div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-dot"></span>
+    VAIBHAV PATEL
+  </a>
+  <ul class="nav-links">
+    <li><a href="#games">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#companies">Companies</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:vaibhavpatel.creates@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Senior Game Developer · Open to Work</div>
+      <h1>Building Games<br>That <em>Scale.</em></h1>
+      <p class="hero-sub">
+        10+ years shipping high-performance mobile titles.
+        Unity, C#, multiplayer architecture, LiveOps, and AWS backend —
+        from prototype to millions of players.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:vaibhavpatel.creates@gmail.com" class="btn btn-fill">Get in Touch ↗</a>
+        <a href="#games" class="btn btn-ghost">View Work</a>
+      </div>
+    </div>
+
+    <div class="hero-stats-panel">
+      <div class="stat-row">
+        <div class="stat-val">10<span>+</span></div>
+        <div class="stat-lbl">Years of experience</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-val">4</div>
+        <div class="stat-lbl">Companies worked with</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-val">6<span>+</span></div>
+        <div class="stat-lbl">Shipped titles</div>
+      </div>
+    </div>
   </div>
-</header>
+</div>
 
-<section>
-  <h2>About Me</h2>
-  <p>
-    Game Developer with over 10 years of experience building scalable,
-    high-performance mobile games. Specialized in gameplay systems, multiplayer
-    architecture, live operations, and backend integrations.
-  </p>
-  <p>
-    I have contributed to globally recognized titles such as Mahjong City Tours
-    and Solitaire Showtime, focusing on feature scalability, internal tools,
-    AWS backend integrations, and performance optimization in live production environments.
-  </p>
-</section>
+<div class="sep"></div>
 
-<section>
-  <h2>Featured Titles</h2>
-  <div class="grid">
+<!-- ══ SHIPPED TITLES ══ -->
+<div class="wrap" id="games">
+  <div class="reveal">
+    <div class="section-label">Featured Work</div>
+    <h2>Shipped Titles</h2>
+  </div>
 
-    <div class="card">
-      <img src="assets/solitaire.webp" alt="Solitaire Showtime">
-      <h3>Solitaire Showtime</h3>
-      <p>
-        Contributed to scalable gameplay features, LiveOps tools, and backend integrations.
-        Focused on performance optimization and production-ready systems.
-      </p>
-      <a href="https://www.jamcity.com/game/solitaire-showtime/" target="_blank">
-        View Official Game Page →
-      </a>
+  <div class="games-grid reveal">
+
+    <div class="game-card">
+      <div class="game-img-wrap">
+        <img src="assets/solitaire.webp" alt="Solitaire Showtime"
+          onerror="this.parentNode.innerHTML='<div class=&quot;game-img-fallback&quot;>&#127183;</div>'">
+      </div>
+      <div class="game-body">
+        <div class="game-platform">Mobile · Jam City</div>
+        <h3>Solitaire Showtime</h3>
+        <p>Scalable gameplay systems, LiveOps tooling, and runtime performance optimisation for high-stability production releases.</p>
+        <a href="https://www.jamcity.com/game/solitaire-showtime/" target="_blank" class="game-link">View Official Game →</a>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="assets/mahjong.webp" alt="Mahjong City Tours">
-      <h3>Mahjong City Tours</h3>
-      <p>
-        Implemented modular gameplay systems and AWS-integrated backend features.
-        Supported high-stability production deployments.
-      </p>
-      <a href="https://www.jamcity.com/game/mahjong-city-tours/" target="_blank">
-        View Official Game Page →
-      </a>
+    <div class="game-card">
+      <div class="game-img-wrap">
+        <img src="assets/mahjong.webp" alt="Mahjong City Tours"
+          onerror="this.parentNode.innerHTML='<div class=&quot;game-img-fallback&quot;>&#126980;</div>'">
+      </div>
+      <div class="game-body">
+        <div class="game-platform">Mobile · Jam City</div>
+        <h3>Mahjong City Tours</h3>
+        <p>Modular architecture and AWS-integrated features supporting live content updates and continuous production deployments.</p>
+        <a href="https://www.jamcity.com/game/mahjong-city-tours/" target="_blank" class="game-link">View Official Game →</a>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="assets/ludo.webp" alt="Ludo World Champion">
-      <h3>Ludo World Champion</h3>
-      <p>
-        Developed multiplayer gameplay systems and optimized performance for
-        large-scale mobile release environments.
-      </p>
-      <a href="https://play.google.com/store/apps/details?id=com.jetplay.ludoworldchamp&hl=en_US&gl=US" target="_blank">
-        View on Play Store →
-      </a>
+    <div class="game-card">
+      <div class="game-img-wrap">
+        <img src="assets/ludo.webp" alt="Ludo World Champion"
+          onerror="this.parentNode.innerHTML='<div class=&quot;game-img-fallback&quot;>&#127922;</div>'">
+      </div>
+      <div class="game-body">
+        <div class="game-platform">Mobile · JetSynthesys</div>
+        <h3>Ludo World Champion</h3>
+        <p>Multiplayer gameplay systems and performance optimisation for large-scale mobile release environments.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.jetplay.ludoworldchamp" target="_blank" class="game-link">View on Play Store →</a>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-img-wrap">
+        <div class="game-img-fallback">🏦</div>
+      </div>
+      <div class="game-body">
+        <div class="game-platform">Simulation · Juego Studios</div>
+        <h3>3D Bank Simulation</h3>
+        <p>Interactive financial literacy simulation for Emirates NBD — modular Unity architecture and UI-driven learning systems for students.</p>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-img-wrap">
+        <div class="game-img-fallback">🥽</div>
+      </div>
+      <div class="game-body">
+        <div class="game-platform">VR · JetSynthesys</div>
+        <h3>VR Multiplayer Prototype</h3>
+        <p>Real-time synchronised VR experience with focus on multiplayer networking, physics interaction, and latency handling.</p>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-img-wrap">
+        <div class="game-img-fallback">🍓</div>
+      </div>
+      <div class="game-body">
+        <div class="game-platform">Indie · Self-published</div>
+        <h3>Fruit Board</h3>
+        <p>End-to-end indie title: gameplay systems, balancing, performance optimisation, and full deployment pipeline management.</p>
+      </div>
     </div>
 
   </div>
-</section>
-<section>
-  <h2>Companies I've Worked With</h2>
+</div>
 
-  <div class="grid">
+<div class="sep"></div>
 
-    <div class="card" style="text-align:center;">
-      <img src="assets/globant.jpeg" alt="Globant Logo" style="width:120px; margin-bottom:15px;">
-      <h3>Globant</h3>
-      <p>Senior Game Developer (2020 – Present)</p>
-      <a href="https://www.globant.com/" target="_blank">Visit Company →</a>
+<!-- ══ SKILLS ══ -->
+<div class="wrap" id="skills">
+  <div class="reveal">
+    <div class="section-label">Technical</div>
+    <h2>Core Expertise</h2>
+  </div>
+
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-title">Core Stack</div>
+      <div class="skill-list">
+        <span>Unity3D</span>
+        <span>C#</span>
+        <span>C++</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎮</div>
+      <div class="skill-title">Game Systems</div>
+      <div class="skill-list">
+        <span>Gameplay Architecture</span>
+        <span>Multiplayer Networking</span>
+        <span>Live Operations</span>
+        <span>Physics Systems</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-title">Backend &amp; Cloud</div>
+      <div class="skill-list">
+        <span>AWS Integration</span>
+        <span>REST APIs</span>
+        <span>Backend Systems</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-title">Tools &amp; Delivery</div>
+      <div class="skill-list">
+        <span>Performance Optimisation</span>
+        <span>Profiling &amp; Debugging</span>
+        <span>Internal Tooling</span>
+        <span>VR / AR</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ══ COMPANIES ══ -->
+<div class="wrap" id="companies">
+  <div class="reveal">
+    <div class="section-label">Employers</div>
+    <h2>Companies I've Worked With</h2>
+  </div>
+
+  <div class="co-cards reveal">
+
+    <div class="co-card co-card--featured">
+      <div class="co-card-top">
+        <div class="co-card-logo">
+          <img src="assets/globant.jpeg" alt="Globant"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="co-card-logo-fallback">G</div>
+        </div>
+        <span class="co-card-badge">Current</span>
+      </div>
+      <div class="co-card-name">Globant</div>
+      <div class="co-card-tags">
+        <span>Unity3D</span><span>C#</span><span>LiveOps</span><span>AWS</span>
+      </div>
     </div>
 
-    <div class="card" style="text-align:center;">
-      <img src="assets/jam_city.jpeg" alt="Jam City Logo" style="width:120px; margin-bottom:15px;">
-      <h3>Jam City</h3>
-      <p>Worked on Solitaire Showtime & Mahjong City Tours</p>
-      <a href="https://www.jamcity.com/" target="_blank">Visit Company →</a>
+    <div class="co-card">
+      <div class="co-card-top">
+        <div class="co-card-logo">
+          <img src="assets/jam_city.jpeg" alt="Jam City"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="co-card-logo-fallback">JC</div>
+        </div>
+      </div>
+      <div class="co-card-name">Jam City</div>
+      <div class="co-card-tags">
+        <span>Solitaire Showtime</span><span>Mahjong City Tours</span>
+      </div>
     </div>
 
-    <div class="card" style="text-align:center;">
-      <img src="assets/jetsynthesys.jpeg" alt="JetSynthesys Logo" style="width:120px; margin-bottom:15px;">
-      <h3>JetSynthesys</h3>
-      <p>Unity Game Developer (2016 – 2020)</p>
-      <a href="https://www.jetsynthesys.com/" target="_blank">Visit Company →</a>
+    <div class="co-card">
+      <div class="co-card-top">
+        <div class="co-card-logo">
+          <img src="assets/jetsynthesys.jpeg" alt="JetSynthesys"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="co-card-logo-fallback">JS</div>
+        </div>
+      </div>
+      <div class="co-card-name">JetSynthesys</div>
+      <div class="co-card-tags">
+        <span>Mobile</span><span>VR / AR</span><span>Multiplayer</span>
+      </div>
     </div>
 
-    <div class="card" style="text-align:center;">
-      <img src="assets/juego_studios.jpeg" alt="Juego Studios Logo" style="width:120px; margin-bottom:15px;">
-      <h3>Juego Studios</h3>
-      <p>Game Developer (2015 – 2016)</p>
-      <a href="https://www.juegostudio.com/" target="_blank">Visit Company →</a>
+    <div class="co-card">
+      <div class="co-card-top">
+        <div class="co-card-logo">
+          <img src="assets/juego_studios.jpeg" alt="Juego Studios"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="co-card-logo-fallback">JU</div>
+        </div>
+      </div>
+      <div class="co-card-name">Juego Studios</div>
+      <div class="co-card-tags">
+        <span>Unity3D</span><span>Simulation</span><span>Edtech</span>
+      </div>
     </div>
 
   </div>
-</section>
+</div>
 
-<section>
-  <h2>Selected Projects</h2>
+<div class="sep"></div>
 
-  <div class="grid">
-
-    <div class="card">
-      <h3>3D Bank Simulation (Emirates NBD)</h3>
-      <p>
-        Developed a 3D interactive banking simulation aimed at enhancing
-        financial literacy among students. Designed gameplay flows,
-        integrated UI systems, and implemented interactive learning modules
-        within a scalable Unity architecture.
-      </p>
-      <p><strong>Tech:</strong> Unity3D, C#, UI Systems</p>
-    </div>
-
-    <div class="card">
-      <h3>VR Multiplayer Prototype</h3>
-      <p>
-        Built an experimental VR multiplayer demo featuring real-time
-        player synchronization and interactive physics systems.
-        Focused on networking logic, optimization, and immersive interaction design.
-      </p>
-      <p><strong>Tech:</strong> Unity3D, C#, Multiplayer Networking</p>
-    </div>
-
-    <div class="card">
-      <h3>Fruit Board (Indie Release)</h3>
-      <p>
-        Designed and developed a casual board-style indie game from concept
-        to release. Owned gameplay mechanics, UI integration, balancing,
-        testing, and deployment pipeline.
-      </p>
-      <p><strong>Tech:</strong> Unity3D, C#, Mobile Optimization</p>
-    </div>
-
+<!-- ══ CONTACT ══ -->
+<div class="wrap" id="contact">
+  <div class="cta-block reveal">
+    <div class="section-label" style="justify-content:center; margin-bottom:20px;">Let's Connect</div>
+    <h2>Ready to Build<br>Something Great?</h2>
+    <p>Open to senior roles, consulting, and collaborative game development.</p>
+    <a href="mailto:vaibhavpatel.creates@gmail.com" class="btn btn-fill" style="font-size:15px; padding:16px 36px;">
+      vaibhavpatel.creates@gmail.com ↗
+    </a>
   </div>
-</section>
+</div>
 
-<section>
-  <h2>Core Expertise</h2>
-  <div class="skills">
-    <span>Unity3D</span>
-    <span>C#</span>
-    <span>C++</span>
-    <span>Multiplayer Systems</span>
-    <span>Live Operations</span>
-    <span>AWS Backend</span>
-    <span>Performance Optimization</span>
-    <span>Mobile Game Architecture</span>
-  </div>
-</section>
-
-<section class="cta">
-  <h2>Let’s Build High-Impact Games</h2>
-  <p>Open to freelance, consulting, and senior-level opportunities.</p>
-  <a href="mailto:vaibhavpatel.creates@gmail.com" class="button">Contact Me</a>
-</section>
-
+<!-- ══ FOOTER ══ -->
 <footer>
-  © 2025 Vaibhav Patel | Game Developer
+  <span>© 2025 Vaibhav Patel — Senior Game Developer</span>
+  <div class="foot-links">
+    <a href="mailto:vaibhavpatel.creates@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/vaibhav-patel/" target="_blank">LinkedIn</a>
+    <a href="#hero">Back to top ↑</a>
+  </div>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

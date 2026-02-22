@@ -86,24 +86,39 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
     .nav-cta {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 18px;
-      background: var(--whatsapp-lo);
-      border: 1px solid rgba(37,211,102,0.3);
+      padding: 8px 16px;
       border-radius: 8px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 13px; font-weight: 600;
-      color: var(--whatsapp); text-decoration: none;
-      transition: all 0.2s;
+      text-decoration: none; transition: all 0.2s;
+      cursor: pointer; border: none; background: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    .nav-cta:hover {
-      background: var(--whatsapp);
-      color: #fff;
+    .nav-cta svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    .nav-cta--wa {
+      background: var(--whatsapp-lo);
+      border: 1px solid rgba(37,211,102,0.3);
+      color: var(--whatsapp);
+    }
+    .nav-cta--wa:hover {
+      background: var(--whatsapp); color: #fff;
       box-shadow: 0 0 20px rgba(37,211,102,0.35);
     }
 
-    .nav-cta svg { width: 15px; height: 15px; fill: currentColor; }
+    .nav-cta--email {
+      background: var(--accent-lo);
+      border: 1px solid var(--border-hi);
+      color: var(--accent);
+    }
+    .nav-cta--email:hover {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 0 20px var(--accent-glo);
+    }
 
     /* ── HERO ── */
     #hero {
@@ -161,13 +176,13 @@
       display: inline-flex; align-items: center; gap: 9px;
       padding: 13px 28px; border-radius: 10px;
       font-size: 14px; font-weight: 700; text-decoration: none;
-      transition: all 0.22s ease;
+      transition: all 0.22s ease; cursor: pointer; border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 
     .btn-whatsapp {
-      background: var(--whatsapp);
-      color: #fff;
+      background: var(--whatsapp); color: #fff;
       box-shadow: 0 6px 28px rgba(37,211,102,0.30);
     }
     .btn-whatsapp:hover {
@@ -175,10 +190,19 @@
       box-shadow: 0 12px 36px rgba(37,211,102,0.45);
     }
 
+    .btn-email {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 6px 28px rgba(59,158,255,0.25);
+    }
+    .btn-email:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(59,158,255,0.40);
+    }
+
     .btn-ghost {
       background: transparent;
-      border: 1px solid var(--border-hi);
-      color: var(--text);
+      border: 1px solid var(--border-hi); color: var(--text);
+      text-decoration: none;
     }
     .btn-ghost:hover {
       border-color: var(--accent); color: var(--accent);
@@ -193,49 +217,36 @@
 
     .hero-photo-ring {
       position: relative;
-      width: 300px; height: 300px;
-      border-radius: 50%;
+      width: 300px; height: 300px; border-radius: 50%;
       padding: 4px;
       background: linear-gradient(135deg, var(--teal), var(--accent));
       box-shadow: 0 0 60px rgba(0,207,180,0.15), 0 0 120px rgba(59,158,255,0.10);
     }
-
     .hero-photo-ring::before {
       content: '';
-      position: absolute; inset: -8px;
-      border-radius: 50%;
+      position: absolute; inset: -8px; border-radius: 50%;
       border: 1px solid rgba(0,207,180,0.15);
       animation: spin 12s linear infinite;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .hero-photo {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; display: block;
       border: 3px solid var(--bg-deep);
     }
 
     .hero-photo-stats {
       display: flex; gap: 28px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px 28px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 16px 28px;
     }
-
-    .hero-stat {
-      display: flex; flex-direction: column; align-items: center; gap: 2px;
-    }
-
+    .hero-stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
     .hero-stat-val {
       font-size: 26px; font-weight: 800; color: var(--heading);
       line-height: 1; letter-spacing: -1px;
     }
     .hero-stat-val span { color: var(--accent); }
-
     .hero-stat-lbl {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px; color: var(--text-dim);
@@ -271,7 +282,6 @@
 
     /* ── GAMES ── */
     .games-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-
     .game-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: 18px; overflow: hidden;
@@ -381,16 +391,14 @@
       font-size: 10px; color: var(--text-dim);
       font-family: 'JetBrains Mono', monospace;
     }
-
     .co-card-link {
       display: inline-flex; align-items: center;
       margin-top: 14px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px; color: var(--accent);
       text-decoration: none; letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: gap 0.2s, opacity 0.2s;
-      opacity: 0.7;
+      text-transform: uppercase; opacity: 0.7;
+      transition: opacity 0.2s, letter-spacing 0.2s;
     }
     .co-card-link:hover { opacity: 1; letter-spacing: 0.1em; }
 
@@ -409,6 +417,7 @@
     }
     .cta-block h2 { margin-bottom: 12px; }
     .cta-block p { color: var(--text-dim); font-size: 16px; margin-bottom: 36px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
     footer {
@@ -418,13 +427,99 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px; color: var(--text-dim);
     }
-    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--accent); }
-    footer .foot-links { display: flex; gap: 28px; }
+    footer a, footer button {
+      color: var(--text-dim); text-decoration: none; transition: color 0.2s;
+      background: none; border: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; cursor: pointer; padding: 0;
+    }
+    footer a:hover, footer button:hover { color: var(--accent); }
+    footer .foot-links { display: flex; gap: 28px; align-items: center; }
 
     /* ── REVEAL ── */
     .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.in { opacity:1; transform:translateY(0); }
+
+    /* ── EMAIL MODAL ── */
+    .email-modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(7,13,26,0.85);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .email-modal-overlay.open {
+      opacity: 1; pointer-events: all;
+    }
+    .email-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hi);
+      border-radius: 20px;
+      padding: 40px 44px;
+      max-width: 420px; width: 90%;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(59,158,255,0.08);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.25s ease;
+      text-align: center;
+    }
+    .email-modal-overlay.open .email-modal {
+      transform: translateY(0) scale(1);
+    }
+    .email-modal-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--accent-lo); border: 1px solid var(--border-hi);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .email-modal-icon svg { width: 26px; height: 26px; fill: var(--accent); }
+    .email-modal h3 {
+      font-size: 20px; font-weight: 800; color: var(--heading);
+      letter-spacing: -0.5px; margin-bottom: 8px;
+    }
+    .email-modal p {
+      font-size: 13.5px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.6;
+    }
+    .email-address-row {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg-raised); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px; margin-bottom: 20px;
+    }
+    .email-address-row span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--heading); flex: 1; text-align: left;
+      word-break: break-all;
+    }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: 7px;
+      background: var(--accent-lo); border: 1px solid var(--border-hi);
+      color: var(--accent); font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 600; cursor: pointer;
+      transition: all 0.18s; white-space: nowrap; flex-shrink: 0;
+    }
+    .copy-btn:hover { background: var(--accent); color: #fff; }
+    .copy-btn.copied { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .email-modal-actions { display: flex; gap: 10px; }
+    .email-modal-open-btn {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 20px; border-radius: 10px;
+      background: var(--accent); color: #fff;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: all 0.2s;
+      border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .email-modal-open-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(59,158,255,0.35);
+    }
+    .email-modal-open-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .email-modal-close {
+      padding: 12px 18px; border-radius: 10px;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-dim); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .email-modal-close:hover { border-color: var(--border-hi); color: var(--text); }
 
     /* ── RESPONSIVE ── */
     @media(max-width: 1200px) { .co-cards { grid-template-columns: repeat(2,1fr); } }
@@ -437,7 +532,7 @@
     }
     @media(max-width: 768px) {
       nav { padding: 0 20px; }
-      .nav-links, .nav-cta { display: none; }
+      .nav-links, .nav-actions { display: none; }
       #hero, .wrap { padding-left: 20px; padding-right: 20px; }
       #hero { padding-top: 100px; }
       .games-grid  { grid-template-columns: 1fr; }
@@ -456,6 +551,31 @@
 
 <div class="bg-glow"></div>
 
+<!-- EMAIL MODAL -->
+<div class="email-modal-overlay" id="emailModalOverlay" role="dialog" aria-modal="true" aria-label="Contact via email">
+  <div class="email-modal">
+    <div class="email-modal-icon">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </div>
+    <h3>Get in Touch</h3>
+    <p>Open your mail app or copy the address below to reach out directly.</p>
+    <div class="email-address-row">
+      <span id="emailDisplayAddress"></span>
+      <button class="copy-btn" id="copyEmailBtn" onclick="copyEmail()">
+        <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        Copy
+      </button>
+    </div>
+    <div class="email-modal-actions">
+      <a id="emailModalMailtoLink" href="#" class="email-modal-open-btn">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Open Mail App
+      </a>
+      <button class="email-modal-close" onclick="closeEmailModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-brand">
@@ -469,11 +589,16 @@
     <li><a href="#companies">Companies</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <!-- REPLACE 91XXXXXXXXXX with your number e.g. 919876543210 -->
-  <a href="https://wa.me/#" target="_blank" class="nav-cta">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    WhatsApp Me
-  </a>
+  <div class="nav-actions">
+    <a href="https://wa.me/#" target="_blank" class="nav-cta nav-cta--wa">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button onclick="openEmailModal()" class="nav-cta nav-cta--email">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Email
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -486,11 +611,14 @@
         Game Developer with 10+ years building mobile titles that reach millions. I own the full cycle - architecture, performance, live ops, and everything in between.
       </p>
       <div class="hero-actions">
-        <!-- REPLACE 91XXXXXXXXXX with your number e.g. 919876543210 -->
         <a href="https://wa.me/#" target="_blank" class="btn btn-whatsapp">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Get in Touch on WhatsApp
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
         </a>
+        <button onclick="openEmailModal()" class="btn btn-email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Send Email
+        </button>
         <a href="#games" class="btn btn-ghost">View Work</a>
       </div>
     </div>
@@ -726,11 +854,16 @@
     <div class="section-label" style="justify-content:center; margin-bottom:20px;">Let's Connect</div>
     <h2>Ready to Build<br>Something Great?</h2>
     <p>Open to senior roles, consulting, and collaborative game development.</p>
-    <!-- REPLACE 91XXXXXXXXXX with your number e.g. 919876543210 -->
-    <a href="https://wa.me/#" target="_blank" class="btn btn-whatsapp" style="font-size:15px; padding:16px 36px; display:inline-flex;">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:currentColor;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Message me on WhatsApp ↗
-    </a>
+    <div class="cta-buttons">
+      <a href="https://wa.me/#" target="_blank" class="btn btn-whatsapp" style="font-size:15px; padding:16px 32px;">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message on WhatsApp
+      </a>
+      <button onclick="openEmailModal()" class="btn btn-email" style="font-size:15px; padding:16px 32px;">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;flex-shrink:0"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Send an Email
+      </button>
+    </div>
   </div>
 </div>
 
@@ -738,8 +871,8 @@
 <footer>
   <span>© 2025 Vaibhav Patel - Game Developer</span>
   <div class="foot-links">
-    <!-- REPLACE 91XXXXXXXXXX with your number e.g. 919876543210 -->
     <a href="https://wa.me/#" target="_blank">WhatsApp</a>
+    <button onclick="openEmailModal()">Email</button>
     <a href="https://www.linkedin.com/in/vaibhav-patel/" target="_blank">LinkedIn</a>
     <a href="#hero">Back to top ↑</a>
   </div>
@@ -747,17 +880,60 @@
 
 <script>
   /* =============================================
-     CONTACT CONFIG — change your number here ONLY
-     Format: country code + number, no + or spaces
-     Example: 919876543210  (91 = India)
+     CONTACT CONFIG — edit here ONLY
   ============================================= */
   const WHATSAPP_NUMBER = '919146948291';
+  const GMAIL_ADDRESS   = 'vaibhavpatel.creates@gmail.com';
 
-  // Apply to all WhatsApp links automatically
+  // Apply WhatsApp number to all wa.me links
   document.querySelectorAll('a[href*="wa.me"]').forEach(el => {
-    const msg = el.dataset.msg || '';
-    el.href = 'https://wa.me/' + WHATSAPP_NUMBER + (msg ? '?text=' + encodeURIComponent(msg) : '');
+    el.href = 'https://wa.me/' + WHATSAPP_NUMBER;
   });
+
+  // Set up email modal content
+  document.getElementById('emailDisplayAddress').textContent = GMAIL_ADDRESS;
+  document.getElementById('emailModalMailtoLink').href = 'mailto:' + GMAIL_ADDRESS;
+
+  // Email modal
+  function openEmailModal() {
+    document.getElementById('emailModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEmailModal() {
+    document.getElementById('emailModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  document.getElementById('emailModalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeEmailModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeEmailModal();
+  });
+
+  // Copy to clipboard
+  function copyEmail() {
+    navigator.clipboard.writeText(GMAIL_ADDRESS).then(function() {
+      const btn = document.getElementById('copyEmailBtn');
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>Copy';
+        btn.classList.remove('copied');
+      }, 2500);
+    }).catch(function() {
+      // Fallback: select the text
+      const el = document.getElementById('emailDisplayAddress');
+      const range = document.createRange();
+      range.selectNode(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+    });
+  }
 
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {

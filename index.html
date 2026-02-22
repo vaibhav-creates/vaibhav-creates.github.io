@@ -1,36 +1,241 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vaibhav Patel</title>
+  <title>Vaibhav Patel | Senior Game Developer</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #111827;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      padding: 100px 20px;
       text-align: center;
+      background: linear-gradient(to bottom right, #1e293b, #0f172a);
     }
+
     h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+      font-size: 44px;
+      margin: 0;
+      color: #38bdf8;
     }
-    p {
+
+    .subtitle {
+      margin-top: 15px;
       font-size: 18px;
-      color: #9ca3af;
+      color: #94a3b8;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #38bdf8;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: #1e293b;
+      padding: 8px 14px;
+      margin: 6px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .button {
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #1e293b;
+      margin-top: 60px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
     }
   </style>
 </head>
 
 <body>
-  <div>
-    <h1>Vaibhav Patel</h1>
-    <p>Software Engineer</p>
+
+<header>
+  <h1>Vaibhav Patel</h1>
+  <div class="subtitle">
+    Game Developer | Unity | C# | Multiplayer & LiveOps | 10+ Years
   </div>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <p>
+    Game Developer with over 10 years of experience building scalable,
+    high-performance mobile games. Specialized in gameplay systems, multiplayer
+    architecture, live operations, and backend integrations.
+  </p>
+  <p>
+    I have contributed to globally recognized titles such as Mahjong City Tours
+    and Solitaire Showtime, focusing on feature scalability, internal tools,
+    AWS backend integrations, and performance optimization in live production environments.
+  </p>
+</section>
+
+<section>
+  <h2>Featured Titles</h2>
+  <div class="grid">
+
+    <div class="card">
+      <img src="assets/solitaire.webp" alt="Solitaire Showtime">
+      <h3>Solitaire Showtime</h3>
+      <p>
+        Contributed to scalable gameplay features, LiveOps tools, and backend integrations.
+        Focused on performance optimization and production-ready systems.
+      </p>
+      <a href="https://www.jamcity.com/game/solitaire-showtime/" target="_blank">
+        View Official Game Page →
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="assets/mahjong.webp" alt="Mahjong City Tours">
+      <h3>Mahjong City Tours</h3>
+      <p>
+        Implemented modular gameplay systems and AWS-integrated backend features.
+        Supported high-stability production deployments.
+      </p>
+      <a href="https://www.jamcity.com/game/mahjong-city-tours/" target="_blank">
+        View Official Game Page →
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="assets/ludo.webp" alt="Ludo World Champion">
+      <h3>Ludo World Champion</h3>
+      <p>
+        Developed multiplayer gameplay systems and optimized performance for
+        large-scale mobile release environments.
+      </p>
+      <a href="https://play.google.com/store/apps/details?id=com.jetplay.ludoworldchamp&hl=en_US&gl=US" target="_blank">
+        View on Play Store →
+      </a>
+    </div>
+
+  </div>
+</section>
+<section>
+  <h2>Companies I've Worked With</h2>
+
+  <div class="grid">
+
+    <div class="card" style="text-align:center;">
+      <img src="assets/globant.jpeg" alt="Globant Logo" style="width:120px; margin-bottom:15px;">
+      <h3>Globant</h3>
+      <p>Senior Game Developer (2020 – Present)</p>
+      <a href="https://www.globant.com/" target="_blank">Visit Company →</a>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <img src="assets/jam_city.jpeg" alt="Jam City Logo" style="width:120px; margin-bottom:15px;">
+      <h3>Jam City</h3>
+      <p>Worked on Solitaire Showtime & Mahjong City Tours</p>
+      <a href="https://www.jamcity.com/" target="_blank">Visit Company →</a>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <img src="assets/jetsynthesys.jpeg" alt="JetSynthesys Logo" style="width:120px; margin-bottom:15px;">
+      <h3>JetSynthesys</h3>
+      <p>Unity Game Developer (2016 – 2020)</p>
+      <a href="https://www.jetsynthesys.com/" target="_blank">Visit Company →</a>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <img src="assets/juego_studios.jpeg" alt="Juego Studios Logo" style="width:120px; margin-bottom:15px;">
+      <h3>Juego Studios</h3>
+      <p>Game Developer (2015 – 2016)</p>
+      <a href="https://www.juegostudio.com/" target="_blank">Visit Company →</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Core Expertise</h2>
+  <div class="skills">
+    <span>Unity3D</span>
+    <span>C#</span>
+    <span>C++</span>
+    <span>Multiplayer Systems</span>
+    <span>Live Operations</span>
+    <span>AWS Backend</span>
+    <span>Performance Optimization</span>
+    <span>Mobile Game Architecture</span>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Let’s Build High-Impact Games</h2>
+  <p>Open to freelance, consulting, and senior-level opportunities.</p>
+  <a href="mailto:vaibhavpatel.creates@gmail.com" class="button">Contact Me</a>
+</section>
+
+<footer>
+  © 2025 Vaibhav Patel | Game Developer
+</footer>
+
 </body>
 </html>

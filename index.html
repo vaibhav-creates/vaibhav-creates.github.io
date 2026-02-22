@@ -5,111 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0f172a;
-      color: #e2e8f0;
-    }
-
-    header {
-      padding: 100px 20px;
-      text-align: center;
-      background: linear-gradient(to bottom right, #1e293b, #0f172a);
-    }
-
-    h1 {
-      font-size: 44px;
-      margin: 0;
-      color: #38bdf8;
-    }
-
-    .subtitle {
-      margin-top: 15px;
-      font-size: 18px;
-      color: #94a3b8;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      color: #38bdf8;
-      margin-bottom: 30px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .skills span {
-      display: inline-block;
-      background: #1e293b;
-      padding: 8px 14px;
-      margin: 6px;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    .cta {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .button {
-      background: #38bdf8;
-      color: #0f172a;
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 15px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #1e293b;
-      margin-top: 60px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -208,6 +104,45 @@
       <h3>Juego Studios</h3>
       <p>Game Developer (2015 – 2016)</p>
       <a href="https://www.juegostudio.com/" target="_blank">Visit Company →</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>3D Bank Simulation (Emirates NBD)</h3>
+      <p>
+        Developed a 3D interactive banking simulation aimed at enhancing
+        financial literacy among students. Designed gameplay flows,
+        integrated UI systems, and implemented interactive learning modules
+        within a scalable Unity architecture.
+      </p>
+      <p><strong>Tech:</strong> Unity3D, C#, UI Systems</p>
+    </div>
+
+    <div class="card">
+      <h3>VR Multiplayer Prototype</h3>
+      <p>
+        Built an experimental VR multiplayer demo featuring real-time
+        player synchronization and interactive physics systems.
+        Focused on networking logic, optimization, and immersive interaction design.
+      </p>
+      <p><strong>Tech:</strong> Unity3D, C#, Multiplayer Networking</p>
+    </div>
+
+    <div class="card">
+      <h3>Fruit Board (Indie Release)</h3>
+      <p>
+        Designed and developed a casual board-style indie game from concept
+        to release. Owned gameplay mechanics, UI integration, balancing,
+        testing, and deployment pipeline.
+      </p>
+      <p><strong>Tech:</strong> Unity3D, C#, Mobile Optimization</p>
     </div>
 
   </div>
